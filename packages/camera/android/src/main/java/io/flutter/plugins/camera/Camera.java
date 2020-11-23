@@ -313,7 +313,7 @@ public class Camera {
 
     // When starting a video recording, re-enable flash torch if we had it enabled before starting
     if (torchEnabled) {
-      captureRequestBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_TORCH);
+      captureRequestBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_SINGLE);
     }
 
     // Build Flutter surface to render to
