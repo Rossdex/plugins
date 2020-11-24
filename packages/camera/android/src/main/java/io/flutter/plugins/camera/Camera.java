@@ -342,13 +342,8 @@ public class Camera {
                 return;
               }
               cameraCaptureSession = session;
-              captureRequestBuilder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
-              if (torchEnabled) {
-                captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON);
-              } else {
-                captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_OFF);
-
-              }
+              captureRequestBuilder.set(
+                  CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
               cameraCaptureSession.setRepeatingRequest(captureRequestBuilder.build(), null, null);
               if (onSuccessCallback != null) {
                 onSuccessCallback.run();
