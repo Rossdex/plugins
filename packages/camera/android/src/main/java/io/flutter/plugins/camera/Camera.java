@@ -269,8 +269,11 @@ public class Camera {
       captureBuilder.addTarget(pictureImageReader.getSurface());
       captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, getMediaOrientation());
       if(torchEnabled) {
+        captureBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_SINGLE);
         captureBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_ALWAYS_FLASH);
+
       } else {
+        captureRequestBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_OFF);
         captureBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_OFF);
       }
 
@@ -347,8 +350,7 @@ public class Camera {
                 return;
               }
               cameraCaptureSession = session;
-              captureRequestBuilder.set(
-                  CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
+              captureRequestBuilder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
               cameraCaptureSession.setRepeatingRequest(captureRequestBuilder.build(), null, null);
               if (onSuccessCallback != null) {
                 onSuccessCallback.run();
