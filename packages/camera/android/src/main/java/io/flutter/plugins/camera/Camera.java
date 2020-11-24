@@ -130,7 +130,7 @@ public class Camera {
           torchEnabled = true;
         } else {
           captureRequestBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_OFF);
-          captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_OFF);
+          captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON);
           torchEnabled = false;
         }
         cameraCaptureSession.setRepeatingRequest(captureRequestBuilder.build(), null, null);
@@ -314,9 +314,10 @@ public class Camera {
     captureRequestBuilder = cameraDevice.createCaptureRequest(templateType);
 
     // // When starting a video recording, re-enable flash torch if we had it enabled before starting
-    // if (torchEnabled) {
-    //   captureRequestBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_SINGLE);
-    // }
+    if (torchEnabled) {
+      captureRequestBuilder.set(CaptureRequest.FLASH_MODE, CaptureRequest.FLASH_MODE_TORCH);
+      captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_ALWAYS_FLASH);
+        }
 
     // Build Flutter surface to render to
     SurfaceTexture surfaceTexture = flutterTexture.surfaceTexture();
