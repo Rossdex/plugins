@@ -344,9 +344,9 @@ public class Camera {
               cameraCaptureSession = session;
               captureRequestBuilder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
               if (torchEnabled) {
-                captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraMetadata.ON);
+                captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.ON);
               } else {
-                captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraMetadata.ON);
+                captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.OFF);
 
               }
               cameraCaptureSession.setRepeatingRequest(captureRequestBuilder.build(), null, null);
